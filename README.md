@@ -5,7 +5,7 @@ A Spring Boot starter that simplifies the usage of the [AxonFramework](http://ww
 You only need to add this library to your Spring Boot project, and a sensible default configuration of the Axon components will be registered for you.
 
 
-Notice : This project is still in very early draft!
+**WARNING : This project is still in very early draft!**
 
 
 
@@ -21,4 +21,7 @@ Add the following dependency to your ``pom.xml`` file:
 ```
 
 Have a look at (TODO) for a sample Spring Boot + Axon application.
+
+
+Licensed under the Apache License Version 2.0
 
