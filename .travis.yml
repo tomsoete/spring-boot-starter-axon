@@ -1,3 +1,4 @@
 language: java
 after_success:
-  - mvn deploy -e --settings ./settings.xml
+  - wget http://roboconf.net/resources/build/settings.xml
+  - mvn deploy -e --settings settings.xml
