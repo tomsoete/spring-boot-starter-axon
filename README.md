@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tomsoete/spring-boot-starter-axon.svg?branch=master)](https://travis-ci.org/tomsoete/spring-boot-starter-axon)
+
 # spring-boot-starter-axon
 A Spring Boot starter that simplifies the usage of the [AxonFramework](http://www.axonframework.org).
 
