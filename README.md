@@ -1,10 +1,11 @@
 [![Build Status](https://travis-ci.org/tomsoete/spring-boot-starter-axon.svg?branch=master)](https://travis-ci.org/tomsoete/spring-boot-starter-axon)
 
 # spring-boot-starter-axon
-A Spring Boot starter that simplifies the usage of the [AxonFramework](http://www.axonframework.org).
+A [Spring Boot](http://projects.spring.io/spring-boot/) starter that simplifies the usage of the [AxonFramework](http://www.axonframework.org).
 
 
-You only need to add this library to your Spring Boot project, and a sensible default configuration of the Axon components will be registered for you.
+You only need to add this library to your Spring Boot project, and a sensible default configuration of the Axon infrastructure will be registered for you.
+For each AggregateRoot, an EventSourcingRepository will be registered to the application context.
 
 
 **WARNING : This project is still in very early draft!**

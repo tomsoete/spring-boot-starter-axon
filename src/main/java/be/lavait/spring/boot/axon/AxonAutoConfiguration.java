@@ -27,6 +27,8 @@ import org.axonframework.eventhandling.annotation.AnnotationEventListenerBeanPos
 import org.axonframework.eventstore.EventStore;
 import org.axonframework.eventstore.fs.FileSystemEventStore;
 import org.axonframework.eventstore.fs.SimpleEventFileResolver;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -62,6 +64,15 @@ public class AxonAutoConfiguration {
     public EventStore eventStore() throws Exception {
         File baseDir = Files.createTempDirectory("events").toFile();
         return new FileSystemEventStore(new SimpleEventFileResolver(baseDir));
+    }
+
+    @Bean
+    public AutoEventSourcingRepositoryCreator autoEventSourcingRepositoryCreator(CommandBus commandBus, EventBus eventBus, EventStore eventStore){
+        AutoEventSourcingRepositoryCreator bean = new AutoEventSourcingRepositoryCreator();
+        bean.setCommandBus(commandBus);
+        bean.setEventBus(eventBus);
+        bean.setEventStore(eventStore);
+        return bean;
     }
 
     @Bean

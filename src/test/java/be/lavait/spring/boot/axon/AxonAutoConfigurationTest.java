@@ -17,13 +17,20 @@ package be.lavait.spring.boot.axon;
 
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.axonframework.domain.AggregateRoot;
 import org.axonframework.domain.IdentifierFactory;
 import org.axonframework.eventhandling.EventBus;
+import org.axonframework.eventsourcing.EventSourcedAggregateRoot;
+import org.axonframework.eventsourcing.EventSourcingRepository;
+import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventstore.EventStore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.TestPropertySource;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -44,7 +51,7 @@ public class AxonAutoConfigurationTest {
     }
 
     @Test
-    public void autoConfigured() throws Exception {
+    public void autoConfiguration() throws Exception {
         this.context.register(AxonAutoConfiguration.class);
         this.context.refresh();
         assertNotNull(this.context.getBean(CommandBus.class));
@@ -53,5 +60,16 @@ public class AxonAutoConfigurationTest {
         assertNotNull(this.context.getBean(EventStore.class));
         assertNotNull(this.context.getBean(IdentifierFactory.class));
     }
+
+    @Test
+    public void autoEventSourcingRepositoryCreated(){
+        this.context.register(AxonAutoConfiguration.class);
+        this.context.register(DummyAggregateRoot.class);
+        this.context.refresh();
+        assertNotNull(this.context.getBean(EventSourcingRepository.class));
+    }
+
+
+
 
 }
